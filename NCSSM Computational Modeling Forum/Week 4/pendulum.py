@@ -2,9 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Function to simulate the motion of a simple pendulum
-def simulate_pendulum(length, theta_0, g, num_steps, delta_t):
+def simulate_pendulum(length, theta_0, g, total_time, delta_t):
+    # Calculates the number of time steps
+    num_steps = int(total_time / delta_t) + 1
+    
     # Initializes arrays to store time, angle, and angular velocity
-    time = np.zeros(num_steps)
+    time = np.linspace(0, total_time, num_steps)
     theta = np.zeros(num_steps)
     omega = np.zeros(num_steps)
     
@@ -14,9 +17,6 @@ def simulate_pendulum(length, theta_0, g, num_steps, delta_t):
     
     # Performs numerical integration using Euler's method
     for i in range(1, num_steps):
-        # Updates time
-        time[i] = time[i-1] + delta_t
-        
         # Calculates angular acceleration using small angle approximation
         alpha = -(g / length) * np.sin(theta[i-1])
         
@@ -51,13 +51,13 @@ def plot_pendulum_motion(time, theta, length):
 # Parameters for the pendulum simulation
 length = float(input('Initial Velocity (m/s): '))  # Length of the pendulum (in meters)
 theta_0 = float(input('Angle in Degrees: '))
-theta_0 = np.radians(float(input(theta_0)))  # Initial angle (in radians)
+theta_0 = np.radians(theta_0)  # Initial angle (in radians)
 g = 9.81  # Acceleration due to gravity (in m/s^2)
-num_steps = 1000  # Number of time steps
+total_time = float(input('Total time for simulation (seconds): '))  # Total time for simulation (in seconds)
 delta_t = 0.01  # Time step size (in seconds)
 
 # Simulates the motion of the pendulum
-time, theta = simulate_pendulum(length, theta_0, g, num_steps, delta_t)
+time, theta = simulate_pendulum(length, theta_0, g, total_time, delta_t)
 
 # Plots the motion of the pendulum
 plot_pendulum_motion(time, theta, length)
