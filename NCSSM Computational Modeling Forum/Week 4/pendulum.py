@@ -7,8 +7,8 @@ def simulate_pendulum(length, theta_0, g, total_time, delta_t):
     time_steps = int(total_time / delta_t) + 1
     
     # Initializes arrays to store time, angle, and angular velocity
-    theta = np.zeros(num_steps)
-    omega = np.zeros(num_steps)
+    theta = np.zeros(time_steps)
+    omega = np.zeros(time_steps)
     
     # Sets initial conditions
     theta[0] = theta_0
@@ -38,8 +38,8 @@ def plot_pendulum_motion(theta, length):
     plt.scatter(x[-1], y[-1], color='r', label='Final Position')
     plt.scatter(0, 0, color='k', label='Pivot Point')
     plt.title('Motion of Simple Pendulum')
-    plt.xlabel('Horizontal Displacement')
-    plt.ylabel('Vertical Displacement')
+    plt.xlabel('Horizontal Displacement (m)')
+    plt.ylabel('Vertical Displacement (m)')
     plt.legend()
     plt.grid()
     plt.axis('equal')
