@@ -46,11 +46,11 @@ def plot_pendulum_motion(theta, length):
     plt.show()
 
 # Parameters for the pendulum simulation
-length = float(input('Initial Velocity (m/s): '))  # Length of the pendulum (in meters)
+length = float(input('Initial length (m): '))  # Length of the pendulum (in meters)
 theta_0 = float(input('Angle in Degrees: '))
 theta_0 = np.radians(theta_0)  # Initial angle (in radians)
 g = 9.81  # Acceleration due to gravity (in m/s^2)
-total_time = float(input('Total time for simulation (seconds): '))  # Total time for simulation (in seconds)
+total_time = float(input('Total time for simulation (s): '))  # Total time for simulation (in seconds)
 delta_t = 0.01  # Time step size (in seconds)
 
 # Simulates the motion of the pendulum
